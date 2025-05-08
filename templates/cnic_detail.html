@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your CNIC</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Your CNIC Details</h1>
+        
+        <div class="cnic-details">
+            <h2>Name: {{ name }}</h2>
+            <p>Birthdate: {{ birthdate }}</p>
+            <p>CNIC Type: {{ cnic_type.capitalize() }}</p>
+            <p>Address: {{ address }}</p>
+            
+            <h3>Uploaded Image:</h3>
+            <img src="{{ url_for('static', filename='uploaded_images/' + image) }}" alt="CNIC Image" class="cnic-image">
+            
+            <p>You will receive your CNIC in 7 days.</p>
+        </div>
+    </div>
+</body>
+</html>

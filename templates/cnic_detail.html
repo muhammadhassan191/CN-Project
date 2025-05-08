@@ -17,7 +17,8 @@
             <p>Address: {{ address }}</p>
             
             <h3>Uploaded Image:</h3>
-            <img src="{{ url_for('static', filename='uploaded_images/' + image) }}" alt="CNIC Image" class="cnic-image">
+            <img src="{{ url_for('static', filename='uploads/' + image) }}" alt="CNIC Image" class="cnic-image">
+
             
             <p>You will receive your CNIC in 7 days.</p>
         </div>

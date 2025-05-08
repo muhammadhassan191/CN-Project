@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from werkzeug.utils import secure_filename
 from datetime import datetime
 import os
-import csv
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -18,10 +17,15 @@ if not os.path.exists(UPLOAD_FOLDER):
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+@app.route('/')
+def home():
+    return render_template('index.html')
+
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
     if request.method == 'GET':
-        return redirect(url_for('home'))
+        return redirect(url_for('home')) 
+
 
     name = request.form.get('name')
     birthdate = request.form.get('birthdate')
@@ -31,7 +35,7 @@ def submit():
 
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        file.save(os.path.join(app.config['uploaded_images'], filename))
     else:
         flash('Invalid image file. Only PNG, JPG, JPEG, and GIF are allowed.', 'error')
         return redirect(url_for('home'))
@@ -47,14 +51,8 @@ def submit():
         flash('You must be at least 18 years old to register for a CNIC.', 'error')
         return redirect(url_for('home'))
 
-    # ✅ Append the data to submissions.csv
-    with open('submissions.csv', 'a', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow([name, birthdate, cnic_type, address, filename])
-
     return render_template('cnic_detail.html', name=name, birthdate=birthdate,
                            cnic_type=cnic_type, address=address, image=filename)
-
 
 if __name__ == '__main__':
     app.run(debug=True)

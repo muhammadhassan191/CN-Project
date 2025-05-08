@@ -1,0 +1,105 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #F1F1F1; /* Cream text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.container {
+    background-color: #1A1A1A; /* Dark gray background for the form */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 600px;
+}
+
+h1 {
+    text-align: center;
+    color: #4CAF50; /* Dark green text */
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-size: 14px;
+    color: #F1F1F1;
+}
+
+input, select, textarea, button {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #333;
+    border-radius: 4px;
+}
+
+textarea {
+    height: 100px;
+}
+
+input[type="date"], select, textarea {
+    background-color: #222;
+    color: #F1F1F1;
+}
+
+button {
+    background-color: #4CAF50; /* Dark green */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049; /* Slightly lighter green */
+}
+
+/* Flash message styling */
+.flash-messages {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.flash-messages .error {
+    background-color: #f44336; /* Red */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.flash-messages .success {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* CNIC Details Page */
+.cnic-details {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cnic-details img {
+    max-width: 200px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
